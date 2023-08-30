@@ -77,12 +77,45 @@ body {
     opacity: 0.69;
 }
 
-#what-page,
+#what-page {
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 4px;
+}
+
 #about-page,
 #testimony-page,
 #contact-page {
-    word-break: break-all;
     font-size: 12px;
+}
+
+#contactBtns {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#instagramBtn,
+#whatsappBtn,
+#mailBtn {
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+    width: 180px;
+    height: 180px;
+    padding: 20px;
+}
+
+#contactBtns button.nes-btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+#instagramIcon,
+#whatIcon,
+#mailIcon {
+    width: 90px;
+    margin-bottom: 20px;
 }
 
 /* Arcade Blinking Text Style */
@@ -104,6 +137,7 @@ body {
         width: 69%;
         margin-left: auto;
         margin-right: auto;
+        margin-top: -20px;
     }
     #taskbar {
         display: grid;
@@ -127,17 +161,39 @@ body {
         word-break: break-all;
         font-weight: bold;
     }
-}
+    #what-page {
+        font-size: 12px;
+        text-align: center;
+        letter-spacing: 2px;
+    }
 
-/* Hide the spinners for number input */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+    #contact-page {
+        margin: -5px;
+    }
+    #contactBtns {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+    #instagramBtn,
+    #whatsappBtn,
+    #mailBtn {
+        font-size: 7px;
+        text-align: center;
+        font-weight: bold;
+        width: 82px;
+        height: 82px;
+        padding: 0px;
+    }
+    #contactBtns button.nes-btn:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    #instagramIcon,
+    #whatIcon,
+    #mailIcon {
+        width: 40px;
+        margin-bottom: 10px;
+    }
 }
-input[type="number"] {
-    -moz-appearance: textfield; /* Firefox */
-}
-
-/* BACKGROUND ANIMATIONS */
 
