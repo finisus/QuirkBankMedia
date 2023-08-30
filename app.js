@@ -51,3 +51,21 @@ function allOtherButtonsOverlay(activeBtn) {
         }
     });
 }
+
+// Social Buttons
+const instagramBtn = document.getElementById('instagramBtn');
+const whatsappBtn = document.getElementById('whatsappBtn');
+const mailBtn = document.getElementById('mailBtn');
+instagramBtn.addEventListener('click', function () {
+    window.open('http://www.instagram.com/quirkbank/', '_blank');
+});
+whatsappBtn.addEventListener('click', function () {
+    window.open('https://wa.me/919886764579', '_blank');
+});
+mailBtn.addEventListener('click', function () {
+    const recipientEmail = 'quirkbankmedia@gmail.com';
+    const subject = encodeURIComponent('');
+    const body = encodeURIComponent('Hello, my name is \n\nI need:');
+    const mailToLink = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+    window.location.href = mailToLink;
+});
