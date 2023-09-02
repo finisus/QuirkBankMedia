@@ -63,7 +63,7 @@ whatsappBtn.addEventListener('click', function () {
     window.open('https://wa.me/919886764579', '_blank');
 });
 mailBtn.addEventListener('click', function () {
-    const recipientEmail = 'quirkbankmedia@gmail.com';
+    const recipientEmail = 'contact@quirkbankmedia.com';
     const subject = encodeURIComponent('');
     const body = encodeURIComponent('Hello, my name is \n\nI need:');
     const mailToLink = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
