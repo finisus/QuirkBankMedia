@@ -60,7 +60,7 @@ instagramBtn.addEventListener('click', function () {
     window.open('http://www.instagram.com/quirkbank/', '_blank');
 });
 whatsappBtn.addEventListener('click', function () {
-    window.open('https://wa.me/919886764579', '_blank');
+    window.open('https://wa.me/917483779517', '_blank');
 });
 mailBtn.addEventListener('click', function () {
     const recipientEmail = 'contact@quirkbankmedia.com';
@@ -68,4 +68,28 @@ mailBtn.addEventListener('click', function () {
     const body = encodeURIComponent('Hello, my name is \n\nI need:');
     const mailToLink = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
     window.location.href = mailToLink;
+});
+
+// Scrollbar
+document.addEventListener("DOMContentLoaded", function() {
+    const style = document.createElement("style");
+    style.textContent = `
+        ::-webkit-scrollbar {
+            width: 20px;
+            background: #EFE7DC;
+            border-left: 4px solid black;
+            border-right: 4px solid black;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #F88379;
+            border: 4px solid black;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6FD9CC;
+            border-color: black;
+        }
+    `;
+    document.head.appendChild(style);
 });
