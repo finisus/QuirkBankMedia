@@ -22,10 +22,10 @@
                     <img id="heading" src="./metadata/qb_logo_full.png">
 
                     <div id="taskbar" class="nes-container is-rounded">
-                        <button id="what-button" type="button" class="nes-btn is-error">WHAT WE<br>DO?</button>
-                        <button id="about-button" type="button" class="nes-btn is-error">ABOUT<br>TEAM</button>
-                        <button id="testimony-button" type="button" class="nes-btn is-error">TESTIMONIALS</button>
-                        <button id="contact-button" type="button" class="nes-btn is-error">CONTACT<br>US</button> 
+                        <button id="what-button" type="button" class="nes-btn is-error">SERVICES<br>OFFERED</button>
+                        <button id="about-button" type="button" class="nes-btn is-error">KNOW THE<br>TEAM</button>
+                        <button id="testimony-button" type="button" class="nes-btn is-error">PORTFOLIO</button>
+                        <button id="contact-button" type="button" class="nes-btn is-error">CONTACT</button> 
                     </div>
 
                     <div id="content-container" class="nes-container is-rounded">
@@ -38,10 +38,44 @@
                             We thrive on crafting novel and disruptive ideas that push the boundaries of creativity while harnessing the power of data to drive results. 
                             <br>
                             Join us on a journey that redefines marketing through a unique blend of quirkiness and strategic innovation.
+                            <br>
+                            <br>
+                            What we do?
+                            <br>
+                            =>Social Media Management
+                            <br>
+                            =>Digital Advertising 
+                            <br>
+                            =>PR
+                            <br>
+                            =>Photography
+                            <br>
+                            =>Videography 
+                            <br>
+                            =>Influencer Marketing
                         </div>
 
                         <div id="about-page">
-                            about
+                            <div class="about-heading">
+                                MUKHERJEE [C.S.O. CHIEF STRATEGY OFFICER]
+                            </div>
+                            <div class="about-text">
+                                Our disruptive strategist, also boasts a forte in the fields of music, writing and powerlifting. His role as a QuirkHead revolves around crafting novel strategies that drive business growth and bring about much-needed brand awareness. He solemnly identifies as the Quirkiest of the QuirkHeads and reserves his right to demonstrate that in all given opportunities.
+                            </div>
+                            <br>
+                            <div class="about-heading">
+                                AADITYA G. TILI [A.E. ACCOUNT EXECUTIVE]
+                            </div>
+                            <div class="about-text">
+                                Our Account Executive, based out of Bangalore, is a creative and a social individual who confidently melds practicality with an emotional depth when expressing his ideas. His keen interest in marketing is matched by his strategic and organised approach. As a good listener, he appreciates diverse perspectives. Beyond his professional pursuits, he is an avid photographer, with a special passion for observing and capturing the world of birdlife in its natural habitat.
+                            </div>
+                            <br>
+                            <div class="about-heading">
+                                ARYAN TOSHNIWAL [A.D. ADMINISTRATIVE DIRECTOR]
+                            </div>
+                            <div class="about-text">
+                                Our Administrative Director, is a business expert, especially in the restaurant and cafe industry; he's a gastronomy enthusiast. Aryan has a vision for a marketing agency that is innovative and disruptive. He believes that by being creative and thinking outside the box, his agency can help businesses reach their full potential. He's driven by innovation and a never-ending quest for excellence.
+                            </div>
                         </div>
 
                         <div id="testimony-page">
@@ -54,7 +88,31 @@
                                 <button id="whatsappBtn" type="button" class="nes-btn is-whatsapp"><img id="whatIcon" src="./metadata/whatsapp.png"><br>WHATSAPP</button>
                                 <button id="mailBtn" type="button" class="nes-btn is-mail"><img id="mailIcon" src="./metadata/mail.png"><br>MAIL</button>
                             </div>
-                            
+                            <div id="queryPage" class="nes-container is-rounded">
+                                <div class="queryTextBig">PING US!</div>
+                                <div id="queryForm">
+                                    <form id="queryForm">
+                                        <br>
+                                        <label for="name" class="queryText">Please enter your Name...</label>
+                                        <input type="text" id="name" name="name" class="nes-input query-input" required>
+                                        <br>
+                                        <div class="queryText">How can we reach you?</div>
+                                        <br>
+                                        <label for="email" class="queryText">Email?</label>
+                                        <input type="email" id="email" name="email" class="nes-input query-input" required>
+                                        <br>
+                                        <div class="queryText">OR</div>
+                                        <br>
+                                        <label for="phone" class="queryText">Your Number?</label>
+                                        <input type="tel" id="phone" name="phone" class="nes-input query-input">
+                                        <br>
+                                        <label for="query" class="queryText">Would you like to tell us more?</label>
+                                        <textarea id="query" name="query" rows="3" class="nes-input query-input" required></textarea>
+                                        <br>
+                                        <button type="button" id="submitQuery" class="nes-btn is-error">SUBMIT QUERY</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -63,5 +121,36 @@
         </div>
 
         <script src="./app.js"></script>
+
+        <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+        <script>
+            emailjs.init("user_your_user_id");
+            function sendQuery(queryData) {
+            emailjs.send("your_service_id", "template_id", queryData)
+                .then(function(response) {
+                    alert("Query submitted successfully! Your ticket number is: " + response.text);
+                }, function(error) {
+                    console.error("Error sending query:", error);
+                    alert("An error occurred while submitting the query.");
+                });
+            }
+            document.getElementById("submitQuery").addEventListener("click", function() {
+                const query = document.getElementById("query").value;
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const phone = document.getElementById("phone").value;
+                if (!query || (!name && !email && !phone)) {
+                    alert("Please provide at least one method of contact and your query.");
+                    return;
+                }
+                const queryData = {
+                    query_text: query,
+                    user_name: name,
+                    user_email: email,
+                    user_phone: phone
+                };
+                sendQuery(queryData);
+            });
+        </script>
     </body>
 </html>
