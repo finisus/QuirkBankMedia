@@ -94,61 +94,33 @@ document.addEventListener("DOMContentLoaded", function() {
     document.head.appendChild(style);
 });
 
-// CARD CAROUSEL
+// Portfolio Folder Page
 
-const cardContainers = document.querySelectorAll(".card-person-wrapper");
-let currentPageIndex = 0;
-const previousButton = document.getElementById("previous-page-button");
-const nextButton = document.getElementById("next-page-button");
-
-function showCard(index) {
-    cardContainers.forEach(container => container.style.display = "none");
-    cardContainers[index].style.display = "block";
-}
-
-function updateButtons() {
-    if (currentPageIndex === 0) {
-        previousButton.disabled = true;
-        previousButton.classList.add("is-disabled");
-    } else {
-        previousButton.disabled = false;
-        previousButton.classList.remove("is-disabled");
-    }
-
-    if (currentPageIndex === cardContainers.length - 1) {
-        nextButton.disabled = true;
-        nextButton.classList.add("is-disabled");
-    } else {
-        nextButton.disabled = false;
-        nextButton.classList.remove("is-disabled");
-    }
-}
-
-document.getElementById("previous-page-button").addEventListener("click", () => {
-    if (currentPageIndex > 0) {
-        currentPageIndex--;
-        updatePageCounter();
-        showCard(currentPageIndex);
-        updateButtons();
-    }
+document.getElementById("folder-1").addEventListener("click", () => showFolioCard(1));
+document.getElementById("folder-2").addEventListener("click", () => showFolioCard(2));
+document.getElementById("folder-3").addEventListener("click", () => showFolioCard(3));
+document.getElementById("home-button").addEventListener("click", () => {
+    document.querySelectorAll(".folio-card").forEach(card => card.classList.remove("active"));
+    document.getElementById("folio-folders").style.display = "flex";
+    document.getElementById("home-button").style.display = "none";
 });
 
-document.getElementById("next-page-button").addEventListener("click", () => {
-    if (currentPageIndex < cardContainers.length - 1) {
-        currentPageIndex++;
-        updatePageCounter();
-        showCard(currentPageIndex);
-        updateButtons();
-    }
-});
+function showFolioCard(cardNumber) {
+    const folioCards = document.querySelectorAll(".folio-card");
+    const activeFolioCard = document.getElementById(`folio-card-${cardNumber}`);
 
-function updatePageCounter() {
-    document.getElementById("page-counter").textContent = (currentPageIndex + 1).toString();
+    folioCards.forEach(card => card.classList.remove("active"));
+    activeFolioCard.classList.add("active");
+
+    // Hide folio-folders when a folio-card is shown
+    document.getElementById("folio-folders").style.display = "none";
+    document.getElementById("home-button").style.display = "block"; // Show the home button
 }
 
-// Hide all card containers except the first one
-cardContainers.forEach((container, index) => {
-    if (index !== 0) {
-        container.style.display = "none";
-    }
+document.querySelectorAll(".back-button").forEach(button => {
+    button.addEventListener("click", () => {
+        document.querySelectorAll(".folio-card").forEach(card => card.classList.remove("active"));
+        document.getElementById("folio-folders").style.display = "flex";
+        document.getElementById("home-button").style.display = "none";
+    });
 });
