@@ -93,3 +93,62 @@ document.addEventListener("DOMContentLoaded", function() {
     `;
     document.head.appendChild(style);
 });
+
+// CARD CAROUSEL
+
+const cardContainers = document.querySelectorAll(".card-person-wrapper");
+let currentPageIndex = 0;
+const previousButton = document.getElementById("previous-page-button");
+const nextButton = document.getElementById("next-page-button");
+
+function showCard(index) {
+    cardContainers.forEach(container => container.style.display = "none");
+    cardContainers[index].style.display = "block";
+}
+
+function updateButtons() {
+    if (currentPageIndex === 0) {
+        previousButton.disabled = true;
+        previousButton.classList.add("is-disabled");
+    } else {
+        previousButton.disabled = false;
+        previousButton.classList.remove("is-disabled");
+    }
+
+    if (currentPageIndex === cardContainers.length - 1) {
+        nextButton.disabled = true;
+        nextButton.classList.add("is-disabled");
+    } else {
+        nextButton.disabled = false;
+        nextButton.classList.remove("is-disabled");
+    }
+}
+
+document.getElementById("previous-page-button").addEventListener("click", () => {
+    if (currentPageIndex > 0) {
+        currentPageIndex--;
+        updatePageCounter();
+        showCard(currentPageIndex);
+        updateButtons();
+    }
+});
+
+document.getElementById("next-page-button").addEventListener("click", () => {
+    if (currentPageIndex < cardContainers.length - 1) {
+        currentPageIndex++;
+        updatePageCounter();
+        showCard(currentPageIndex);
+        updateButtons();
+    }
+});
+
+function updatePageCounter() {
+    document.getElementById("page-counter").textContent = (currentPageIndex + 1).toString();
+}
+
+// Hide all card containers except the first one
+cardContainers.forEach((container, index) => {
+    if (index !== 0) {
+        container.style.display = "none";
+    }
+});
